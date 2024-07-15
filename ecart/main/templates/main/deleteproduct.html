@@ -1,0 +1,57 @@
+{% extends 'main/master.html' %}
+
+{% block title %}Delete Product - eCart{% endblock %}
+
+{% block content %}
+<style>
+    .delete-product-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f4f4f4;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    
+    .delete-product-form h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .delete-product-form p {
+        margin-bottom: 15px;
+    }
+    
+    .delete-product-form button {
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .delete-product-form .btn-cancel {
+        padding: 10px 20px;
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none
+    }
+    
+    </style>
+<div class="delete-product-form">
+    <h2>Are you sure you want to delete this product?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p><strong>{{ product.name }}</strong></p>
+        <p>{{ product.description }}</p>
+        <p>${{ product.price }}</p>
+        <button type="submit">Delete Product</button>
+        <a href="{% url 'home' %}" class="btn-cancel">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Product - eCart{% endblock %}
+
+{% block content %}
+<head>
+<style>
+    .edit-product-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f4f4f4;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .edit-product-form h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .edit-product-form .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .edit-product-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    .edit-product-form input, .edit-product-form textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .edit-product-form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .edit-product-form button:hover {
+        opacity: 0.8;
+    }
+</style>
+</head>
+<div>
+    <form class="edit-product-form" method="post" enctype="multipart/form-data" novalidate action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ product.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" id="description" class="form-control" style="height: 100px" required>{{ product.description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Update Product</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

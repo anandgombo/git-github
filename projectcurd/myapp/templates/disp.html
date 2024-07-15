@@ -1,0 +1,11 @@
+
+
+<a href="{% url "disp" %}">disp<a/>
+    <a href="{% url "form" %}">form<a/>
+{% for i in obj %}
+{{i.id}}
+{{i.name}}
+{{i.roll}}<br><img src="{{i.img.url}}" height=100 width=150>
+
+
+{% endfor %}

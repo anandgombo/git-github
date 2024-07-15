@@ -1,0 +1,45 @@
+<!-- templates/cases/case_list.html -->
+<!DOCTYPE html>
+<!-- templates/cases/case_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Court Cases List</h2>
+    <!-- Add your case list table here -->
+
+
+<html>
+<head>
+    <title>Court Cases List</title>
+</head>
+<body>
+    <h1>Court Cases List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Case Number</th>
+                <th>Judge Name</th>
+                <th>Case Type</th>
+                <th>Filing Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in cases %}
+                <tr>
+                    <td>{{ case.case_number }}</td>
+                    <td>{{ case.judge_name }}</td>
+                    <td>{{ case.case_type }}</td>
+                    <td>{{ case.filing_date }}</td>
+                    <td>
+                        <a href="{% url 'update-case' case.pk %}">Update</a> |
+                        <a href="{% url 'delete-case' case.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add-case' %}">Add New Case</a>
+</body>
+</html>
+{% endblock %}

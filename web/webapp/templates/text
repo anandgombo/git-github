@@ -1,0 +1,107 @@
+from django.db import models
+# Create your models here.
+import datetime
+import os
+
+def filepath(request, filename):
+    old_filename = filename
+    timeNow = datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename = "%s%s" % (timeNow, old_filename)
+    return os.path.join('uploads/', filename)
+
+class Item(models.Model):
+    name = models.TextField(max_length=191)
+    price = models.TextField(max_length=50)
+    description = models.TextField(max_length=500, null=True)
+    image = models.ImageField(upload_to=filepath, null=True, blank=True)
+Here, we are creating a model/table Item and we have one image field. We have written a function filepath() to generate a unique name for images whenever we are uploading any image. After creating the model "Item", just register your models in the admin.py file.
+
+from django.contrib import admin
+from .models import Item
+# Register your models here.
+
+admin.site.register(Item)
+Once you have registered your models, run the command
+
+py manage.py makemigrations
+and your migrations will be ready. Run the command
+
+py manage.py migrate
+and your table will be migrated to your database.
+
+Now as we are ready with the database, let's write the path and write the function to insert the image into database.
+
+create a urls.py file in the application you created inside the project and paste the below code:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('add-product/', views.addProduct, name="add-prod"),  
+]
+In the views.py file, create a function addProduct and paste the below code :
+
+
+def addProduct(request):
+    if request.method == "POST":
+        prod = Item()
+        prod.name = request.POST.get('name')
+        prod.description = request.POST.get('description')
+        prod.price = request.POST.get('price')
+
+        if len(request.FILES) != 0:
+            prod.image = request.FILES['image']
+
+        prod.save()
+        messages.success(request, "Product Added Successfully")
+        return redirect('/')
+    return render(request, 'products/add.html')
+ The add.html file would look like :
+
+{% extends 'products/layouts/main.html' %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Add Product</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" Required name="name" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Descritpion</label>
+                                <input type="text" Required name="description" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Price</label>
+                                <input type="text" Required name="price" class="form-control">
+                            </div>
+                             <div class="mb-3">
+                                <label for="" class="form-label">Image</label>
+                                <input type="file" Required name="image" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+Add the below code in the project's urls.py file 
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

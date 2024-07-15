@@ -1,0 +1,33 @@
+{% extends 'main/master.html' %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Add Product - eCart{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">>
+</head>
+
+{% block content %}
+
+<div class="add-product-form">
+    <h2>Add a New Product</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Name:</label>
+            <input type="text" id="id_name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="id_description">Description:</label>
+            <textarea id="id_description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="id_price">Price:</label>
+            <input type="number" id="id_price" name="price" step="0.01" required>
+        </div>
+        <button type="submit">Add Product</button>
+    </form>
+</div>
+{% endblock %}

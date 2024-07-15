@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+<ul>
+    {% for item in obj %}
+        <li>
+            <strong>ID:</strong> {{ item.id }}<br>
+            <strong>Name:</strong> {{ item.name }}<br>
+            <strong>Salary:</strong> {{ item.sal }}<br>
+            <strong>Date:</strong> {{ item.date }}<br>
+            <strong>Photo:</strong> <img src="{{ item.image.url }}" alt="Photo"><br>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endblock %}
+ 

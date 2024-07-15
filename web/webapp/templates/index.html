@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <!-- Add any necessary CSS or external libraries here -->
+    <link rel="stylesheet" href="path/to/your/stylesheet.css"> <!-- Link to your custom stylesheet -->
+    <style>
+        /* Example CSS for header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>My Website</h1>
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'add' %}">Add Product</a>
+            
+            <a href="{% url 'show' %}">show Product</a>
+            <a href="{% url 'edit' %}">edit Product</a> 
+            <a href="{% url 'del' %}">del Product</a>           
+            
+        </nav>
+    </header>
+
+    <!-- Content Section -->
+    <div class="content">
+        {% block content %} <!-- This block will be overridden in child templates -->
+        {% endblock %}
+    </div>
+
+    <!-- Add any necessary JavaScript at the end -->
+    <script src="path/to/your/script.js"></script> <!-- Link to your custom JavaScript file -->
+</body>
+</html>

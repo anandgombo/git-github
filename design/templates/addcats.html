@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static '/static/css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static '/static/css/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  
+
+
+
+    <div class="container">
+       <div class="row">
+        <div class="col-lg-6 offset-1">
+          <div class="card mb-3">
+
+            <div class="card-body">
+
+              <div class="pt-4 pb-2">
+                <h5 class="card-title text-center pb-0 fs-4">Add New Product</h5>
+              </div>
+
+              <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                <div class="col-12">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <label for="des" class="form-label">Description</label>
+                    <textarea name="des" class="form-control" style="height: 100px" required></textarea>
+                  </div>
+                
+                <div class="col-12">
+                  <button class="btn btn-primary w-100" type="submit">Add category</button>
+                </div>
+                 
+                <div class="col-12">
+                  <a href="/cats/" class="btn btn-primary w-100" type="submit">Back to home</a>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+       </div>
+    </div>
+
+
+</body>
+
+</html>

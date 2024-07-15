@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background-color: skyblue; /* Set background color to yellow */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="file"] {
+            width: calc(100% - 22px); /* Adjusted width for consistent padding */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: blue; /* Set background color to red */
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px; /* Increased padding for better clickability */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px; /* Increased margin for better alignment */
+            font-size: 18px; /* Increased font size for better visibility */
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group .error-message {
+            color: red;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+<a href="{% url "disp" %}">disp<a/>
+    <a href="{% url "form" %}">form<a/>
+    <div class="container">
+        <h2>Signup Form</h2>
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="roll">Roll:</label>
+                <input type="number" id="roll" name="roll" required>
+                <span class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="img">Image:</label>
+                <input type="file" id="img" name="img" required>
+                <span class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Signup">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

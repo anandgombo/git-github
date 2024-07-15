@@ -1,0 +1,53 @@
+{% extends 'main/master.html' %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Dashboard - eCart{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">>
+</head>
+
+{% block content %}
+<div class="dashboard">
+    <h2>Welcome to Your Dashboard</h2>
+    
+    <div class="stats">
+        <div class="stat-item">
+            <h3>Total Products</h3>
+            <p>{{ total_products }}</p>
+        </div>
+        <div class="stat-item">
+            <h3>Total Revenue</h3>
+            <p>${{ total_revenue }}</p>
+        </div>
+        <div class="stat-item">
+            <h3>Number of Orders</h3>
+            <p>{{ total_orders }}</p>
+        </div>
+    </div>
+
+    <h2>Product List</h2>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>${{ product.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'logout' %}" class="btn btn-logout">Logout</a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+
+{% extends "master.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<table border=3>
+    <td><a href="{% url "form" %}">Sing_form</a></td></table>
+<table>
+    
+    
+    <thead>
+        <tr>
+            
+            <th>email</th>
+            
+            <th>password</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        </tr>
+        {% for d in dict_data %}
+        
+        <tr>
+        
+            
+            <td>{{ d.email }}</td>
+            
+            <td>{{ d.password }}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
+{% endblock %}

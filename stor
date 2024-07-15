@@ -1,0 +1,18 @@
+def addproduct_view(request):
+    cats = Category.objects.all()
+    if request.method == 'POST':
+        n = request.POST.get('name')
+        p = request.POST.get('price')
+        
+        d = request.POST.get('des')
+        i = request.FILES['image']
+        print(n, p,  d, i)
+        
+        # # Fetch the category instance
+        # category_instance = Category.objects.get(id=c)
+        
+        # Create and save the product
+        obj = Product(name=n, price=p, des=d, image=i)
+        obj.save()
+        
+    return render(request, 'addproduct.html')

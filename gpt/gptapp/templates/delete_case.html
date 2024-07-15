@@ -1,0 +1,26 @@
+<!-- templates/cases/delete_case.html -->
+<!DOCTYPE html>
+<!-- templates/cases/delete_case.html -->
+{% extends 'base.html' %}
+
+{% block title %}Delete Case{% endblock %}
+
+    <!-- Add your delete case confirmation message and form here -->
+
+
+{% block content %}
+    <h2>Delete Case</h2>
+<html>
+<head>
+    <title>Delete Case</title>
+</head>
+<body>
+    <h1>Delete Case</h1>
+    <p>Are you sure you want to delete this case?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>
+{% endblock %}

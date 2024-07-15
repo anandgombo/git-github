@@ -1,0 +1,11 @@
+<ul>
+    {% for item in obj %}
+        <li>
+            <strong>Name:</strong> {{ item.name }}<br>
+            <strong>Salary:</strong> {{ item.sal }}<br>
+            <strong>Date:</strong> {{ item.date }}<br>
+            <strong>Photo:</strong> <img src="{{ item.photo.url }}" alt="Photo"><br>
+        </li>
+    {% endfor %}
+    </ul>
+    

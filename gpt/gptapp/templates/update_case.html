@@ -1,0 +1,26 @@
+<!-- templates/cases/update_case.html -->
+<!DOCTYPE html>
+<!-- templates/cases/update_case.html -->
+{% extends 'base.html' %}
+
+{% block title %}Update Case{% endblock %}
+
+    <!-- Add your update case form here -->
+
+
+{% block content %}
+    <h2>Update Case</h2>
+<html>
+<head>
+    <title>Update Case</title>
+</head>
+<body>
+    <h1>Update Case</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Case</button>
+    </form>
+</body>
+</html>
+{% endblock %}
